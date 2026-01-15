@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Pipiww 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffc3e1 50%, #ffb3d9 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        #backgroundPhoto {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25;
+            z-index: 0;
+            filter: blur(3px);
+        }
+
+        .page {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 700px;
+            width: 100%;
+            animation: fadeIn 1s ease-in;
+            min-height: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            margin: 20px;
+            min-height: auto;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #ff69b4;
+            text-shadow: 2px 2px 4px rgba(255,182,193,0.5);
+            margin-bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .message {
+            color: #ff1493;
+            font-size: 1.4em;
+            line-height: 2;
+            margin: 30px 0;
+            font-weight: 500;
+        }
+
+        .emoji {
+            font-size: 100px;
+            margin: 20px 0;
+            display: inline-block;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s ease;
+            margin: 15px 10px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 20, 147, 0.5);
+        }
+
+        .btn-love {
+            background: linear-gradient(135deg, #ff85c1, #ff69b4);
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-heart {
+            position: fixed;
+            font-size: 30px;
+            animation: floatUp 4s ease-in forwards;
+            opacity: 0;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.5);
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .candles-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin: 40px 0;
+            gap: 0px;
+        }
+
+        .candle {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Huruf V Solid - More Cute */
+        .letter-v {
+            width: 160px;
+            height: 170px;
+            position: relative;
+            background: linear-gradient(135deg, #ffc3e1 0%, #ffb3d9 30%, #ff85c1 60%, #ff69b4 100%);
+            clip-path: polygon(
+                15% 0%,
+                35% 0%,
+                50% 75%,
+                65% 0%,
+                85% 0%,
+                70% 100%,
+                30% 100%
+            );
+            border-radius: 25px;
+            box-shadow: 
+                inset -8px -8px 20px rgba(255, 20, 147, 0.3),
+                inset 8px 8px 20px rgba(255, 255, 255, 0.5),
+                0 15px 40px rgba(255, 105, 180, 0.6),
+                0 5px 15px rgba(255, 182, 193, 0.4);
+            animation: candleSwayCute 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.5));
+        }
+
+        .letter-v::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+                linear-gradient(90deg, 
+                    transparent 0%, 
+                    rgba(255, 255, 255, 0.2) 40%, 
+                    transparent 50%,
+                    rgba(255, 20, 147, 0.15) 70%,
+                    transparent 100%
+                );
+            clip-path: polygon(
+                15% 0%,
+                35% 0%,
+                50% 75%,
+                65% 0%,
+                85% 0%,
+                70% 100%,
+                30% 100%
+            );
+        }
+
+        .letter-v::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 20%;
+            left: 25%;
+            filter: blur(3px);
+        }
+
+        @keyframes candleSwayCute {
+            0%, 100% { 
+                transform: rotate(0deg) scale(1); 
+            }
+            25% { 
+                transform: rotate(-1deg) scale(1.01); 
+            }
+            75% { 
+                transform: rotate(1deg) scale(1.01); 
+            }
+        }
+
+        .wick {
+            position: absolute;
+            width: 5px;
+            height: 14px;
+            background: linear-gradient(to bottom, #8B4513, #654321, #000);
+            border-radius: 2px 2px 0 0;
+            z-index: 1;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .wick.left {
+            left: 45px;
+            top: -10px;
+        }
+
+        .wick.right {
+            left: 105px;
+            top: -10px;
+        }
+
+        /* Flower decorations */
+        .flower-decoration {
+            position: absolute;
+            font-size: 42px;
+            z-index: 2;
+            animation: flowerFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 3px 6px rgba(255, 105, 180, 0.4));
+        }
+
+        .flower-decoration.top-left {
+            left: 35px;
+            top: 20px;
+        }
+
+        .flower-decoration.top-right {
+            left: 95px;
+            top: 20px;
+            animation-delay: 0.5s;
+        }
+
+        .flower-decoration.center {
+            left: 65px;
+            top: 100px;
+            font-size: 38px;
+            animation-delay: 1s;
+        }
+
+        @keyframes flowerFloat {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1); 
+            }
+            50% { 
+                transform: translateY(-8px) rotate(10deg) scale(1.08); 
+            }
+        }
+
+        .flame {
+            position: absolute;
+            width: 28px;
+            height: 50px;
+            background: radial-gradient(ellipse at center bottom, 
+                #fff 0%, 
+                #ffff99 10%,
+                #ffff00 20%, 
+                #ffcc00 35%,
+                #ffaa00 50%, 
+                #ff8800 65%,
+                #ff6600 80%, 
+                transparent 95%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flickerCute 0.12s ease-in-out infinite alternate;
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.9),
+                0 0 50px rgba(255, 165, 0, 0.6),
+                0 -15px 25px rgba(255, 255, 100, 0.4);
+            transition: all 1s ease-out;
+            filter: blur(1.2px);
+            z-index: 10;
+        }
+
+        .flame.left {
+            left: 32px;
+            top: -55px;
+        }
+
+        .flame.right {
+            left: 92px;
+            top: -55px;
+        }
+
+        .flame::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 14px;
+            height: 28px;
+            background: radial-gradient(ellipse at center, 
+                #fff 0%, 
+                #ffffee 20%,
+                #ffffcc 40%, 
+                transparent 70%);
+            border-radius: 50%;
+            animation: innerFlickerCute 0.18s ease-in-out infinite alternate;
+        }
+
+        @keyframes flickerCute {
+            0% { 
+                transform: scaleY(0.96) scaleX(1.02);
+                filter: blur(1.2px) brightness(1.1);
+            }
+            100% { 
+                transform: scaleY(1.04) scaleX(0.98);
+                filter: blur(1.5px) brightness(1);
+            }
+        }
+
+        @keyframes innerFlickerCute {
+            0% { 
+                opacity: 0.85; 
+                transform: translate(-50%, -50%) scaleY(1) scaleX(1); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translate(-50%, -50%) scaleY(1.12) scaleX(0.95); 
+            }
+        }
+
+        .flame.dimming {
+            animation: flickerDim 0.2s ease-in-out infinite alternate;
+            box-shadow: 0 0 15px rgba(255, 200, 0, 0.5);
+        }
+
+        .flame.off {
+            opacity: 0;
+            transform: scale(0.3);
+            animation: none;
+        }
+
+        @keyframes flickerDim {
+            0% { 
+                transform: scaleY(0.6);
+                filter: brightness(0.7) blur(1.5px);
+            }
+            100% { 
+                transform: scaleY(0.7);
+                filter: brightness(0.8) blur(2px);
+            }
+        }
+
+        @keyframes flicker {
+            0% { 
+                transform: scaleY(0.95) scaleX(1);
+                filter: blur(1.2px);
+            }
+            100% { 
+                transform: scaleY(1.05) scaleX(0.98);
+                filter: blur(1.5px);
+            }
+        }
+
+        .flower {
+            position: fixed;
+            font-size: 45px;
+            animation: fallFlower 8s ease-in infinite;
+            opacity: 0;
+            z-index: 99;
+            pointer-events: none;
+        }
+
+        @keyframes fallFlower {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0.7;
+            }
+        }
+
+        .balloon {
+            position: fixed;
+            font-size: 80px;
+            animation: balloonFloat 3s ease-out forwards;
+            z-index: 50;
+            pointer-events: none;
+        }
+
+        @keyframes balloonFloat {
+            0% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2) translateY(-30vh);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0) translateY(-50vh);
+                opacity: 0;
+            }
+        }
+
+
+
+        .blow-count {
+            font-size: 1.2em;
+            color: #ff1493;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .message {
+                font-size: 1.1em;
+            }
+            
+            .emoji {
+                font-size: 70px;
+            }
+
+            .music-control {
+                bottom: 20px;
+                right: 20px;
+                padding: 15px;
+            }
+
+            .candles-container {
+                gap: 20px;
+            }
+
+            .candle-stick {
+                width: 25px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container" id="heartsContainer"></div>
+    <img id="backgroundPhoto" src="quality_restoration_20240805195913099[1].jpg" alt="Background">
+
+    <!-- Page 1: Opening -->
+    <div class="page active" id="page1">
+        <div class="card">
+            <div class="emoji">💌</div>
+            <h1>Buatt pipiww kuu yang palingg aku sayangggg</h1>
+            <p class="message">
+                Adaa Sesuatu buatt kamuu sayangggg...<br>
+            </p>
+            <button class="btn" onclick="nextPage(2)">Buka Kejutannya 💖</button>
+        </div>
+    </div>
+
+    <!-- Page 2: Birthday Wishes -->
+    <div class="page" id="page2">
+        <div class="card">
+            <div class="emoji">🎉</div>
+            <h1>HAPPY BIRTHDAY SAYANGGGG 🎂</h1>
+            <p class="message">
+                Selamattt ulang tahun buatt kamu yaaa sayangggg 💕<br><br>
+                
+                Semoga di tahun ini:<br>
+                🌸 Semua impianmu jadi kenyataann<br>
+                ✨ Kamu selalu bahagiaa samaa aku dan sehat selaluu<br>
+                💖 Kita selalu barengg sampaii kapanpunn<br>
+                🌈 Selaluu banggaaiinn orangtua jugaa<br>
+                ⭐ Semua yang terbaik buatt pipiwwkuu<br><br>
+                
+                Terimaaakasiihhh udahh adaa buatt aku yaaa sayangggg 🥰<br>
+                <strong>I LOVE YOU SO MUCH 💖💖💖</strong>
+            </p>
+            <button class="btn" onclick="nextPage(3)" style="margin-bottom: 80px;">Halaman Selanjutnya ➡️</button>
+            <button class="btn btn-love" onclick="showLove()">💕 Love</button>
+        </div>
+    </div>
+
+    <!-- Page 3: Blow Candles -->
+    <div class="page" id="page3">
+        <div class="card">
+            <h1>Tiup Lilinnya 🎂</h1>
+            
+            <div class="candles-container">
+                <div class="candle">
+                    <div class="flame left" id="flame1"></div>
+                    <div class="flame right" id="flame2"></div>
+                    <div class="wick left"></div>
+                    <div class="wick right"></div>
+                    <div class="letter-v">
+                        <div class="flower-decoration top-left">🌼</div>
+                        <div class="flower-decoration top-right">🌸</div>
+                        <div class="flower-decoration center">🌺</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="blow-count"></p>
+            <p class="blow-count" id="blowCounter"> </p>
+            
+            <button class="btn" onclick="blowCandle()">💨 Tiup</button>
+        </div>
+    </div>
+
+
+
+    <script>
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        let currentPage = 1;
+        let blowCount = 0;
+        let candlesOut = [false, false];
+
+        function nextPage(pageNum) {
+            document.getElementById(`page${currentPage}`).classList.remove('active');
+            currentPage = pageNum;
+            document.getElementById(`page${pageNum}`).classList.add('active');
+            
+            playSound(600, 0.2);
+            
+            createFloatingHearts();
+        }
+
+        function showLove() {
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    const hearts = ['💕', '💖', '💗', '💝', '💓', '❤️', '💞'];
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = (Math.random() * 80 + 10) + '%';
+                    heart.style.bottom = '0px';
+                    heart.style.fontSize = (Math.random() * 20 + 25) + 'px';
+                    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 80);
+            }
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    createFlowers();
+                }, i * 150);
+            }
+            
+            playSound(800, 0.3);
+        }
+
+        function blowCandle() {
+            blowCount++;
+            document.getElementById('blowCounter').textContent = `Tiupan: ${blowCount} / 6`;
+            
+            playSound(300 + Math.random() * 200, 0.4);
+
+            // Make candles dimmer with each blow
+            if (blowCount >= 1 && blowCount < 3) {
+                document.getElementById('flame1').classList.add('dimming');
+            }
+            if (blowCount >= 4 && blowCount < 6) {
+                document.getElementById('flame2').classList.add('dimming');
+            }
+
+            // Turn off candles - angka 2 dulu, baru angka 0
+            if (blowCount === 3 && !candlesOut[0]) {
+                const flame1 = document.getElementById('flame1');
+                flame1.classList.remove('dimming');
+                flame1.classList.add('off');
+                candlesOut[0] = true;
+                playSound(500, 0.5);
+            }
+            if (blowCount === 6 && !candlesOut[1]) {
+                const flame2 = document.getElementById('flame2');
+                flame2.classList.remove('dimming');
+                flame2.classList.add('off');
+                candlesOut[1] = true;
+                playSound(700, 0.5);
+                
+                // All candles out - celebrate with balloons!
+                setTimeout(() => {
+                    celebrateWithBalloons();
+                }, 500);
+            }
+        }
+
+        function celebrateWithBalloons() {
+            const balloonEmojis = ['🎈', '🎈', '🎈', '🎈', '🎈', '🎈'];
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const balloon = document.createElement('div');
+                    balloon.className = 'balloon';
+                    balloon.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
+                    balloon.style.left = Math.random() * 90 + 5 + '%';
+                    balloon.style.bottom = '-100px';
+                    balloon.style.animationDelay = (Math.random() * 0.5) + 's';
+                    document.body.appendChild(balloon);
+                    
+                    // Pop sound
+                    setTimeout(() => {
+                        playSound(800 + Math.random() * 400, 0.2);
+                    }, 2500);
+                    
+                    setTimeout(() => balloon.remove(), 3000);
+                }, i * 150);
+            }
+
+            // Add extra effects
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createFloatingHearts();
+                    createFlowers();
+                }, i * 80);
+            }
+        }
+
+
+        function createFloatingHearts() {
+            const hearts = ['💕', '💖', '💗', '💝', '💓', '❤️'];
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    heart.style.fontSize = (Math.random() * 15 + 20) + 'px';
+                    document.getElementById('heartsContainer').appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 100);
+            }
+        }
+
+        function createFlowers() {
+            const flowers = ['🌸', '🌺', '🌷', '🌹', '💐', '🌼'];
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const flower = document.createElement('div');
+                    flower.className = 'flower';
+                    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                    flower.style.left = Math.random() * 100 + '%';
+                    flower.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                    flower.style.animationDelay = (Math.random() * 2) + 's';
+                    document.body.appendChild(flower);
+                    
+                    setTimeout(() => flower.remove(), 10000);
+                }, i * 200);
+            }
+        }
+
+        function playSound(frequency, duration) {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = frequency;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + duration);
+        }
+
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                createFloatingHearts();
+            }
+        }, 2000);
+
+        createFloatingHearts();
+    </script>
+</body>
+</html>
